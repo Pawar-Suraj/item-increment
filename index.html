@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 300px;
+            background-color: #782bf3;
+            margin: 0 auto;
+            margin-top: 150px;
+            padding: 20px;
+            color: white;
+            border-radius: 20px;
+        }
+        .img{
+            height: 300px;
+            display: block;
+            margin: -150px auto;
+        }
+        .heading{
+            text-align: center;
+            margin-top: 150px;
+        }
+        .description{
+            text-align: center;
+        }
+        .price{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 200px;
+            margin: 0 auto;
+            margin-top: -20px;
+        }
+        .quantity{
+            font-size: 20px;
+        }
+        .bottom{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 300px;
+            margin: 10px auto;
+        }
+        .btn{
+            padding: 10px;
+            border: none;
+            background-color:greenyellow;
+            border-radius: 50px;
+            height: 40px;
+            width: 150px;
+            color: green;
+            font-weight: bold;
+            box-shadow: 5px 5px 10px 1px rgb(58, 57, 57);
+        }
+        .q-content{
+            margin: 0 10px;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-color:  #f2f2f2;">
+    <div class="container">
+        <img src="car.png" class="img">
+        <h1 class="heading">Chevorlett Impala</h1>
+        <p class="description">
+            Chevrolet, often shortened to Chevy, is a brand of car made by General Motors (GM). Chevy is known for 
+            offering a wide variety of vehicles, including:
+        </p>
+        <div class="price">
+            <p id="quantityCalculate">1 X 999</p>
+            <h1 id="total">₹999</h1>
+        </div>
+        <div class="bottom">
+            <div class="quantity">
+                <span class="decrease q-content" onclick="dec()">-</span>
+                <span class="number q-content" id="quantityNo">1</span>
+                <span class="increase q-content" onclick="inc()">+</span>
+            </div>
+            <button class="btn">ADD TO CART</button>
+        </div>
+    </div>
+
+    <script>
+
+        const quantityNo=document.getElementById('quantityNo');
+        const quantityCalculate=document.getElementById('quantityCalculate');
+        const total=document.getElementById('total');
+        function inc(){
+            let quantity=parseInt(quantityNo.innerText);
+            if (quantity<10){
+                quantityNo.innerText=++quantity;
+            }
+            else{
+                alert("You can't buy more than 10 items");
+            }
+
+            quantityCalculate.innerText=`${quantity} X 999`;
+            total.innerText=`₹${quantity*999}`;
+        }
+
+        function dec(){
+            let quantity=parseInt(quantityNo.innerText);
+            if (quantity>1){
+                quantityNo.innerText=--quantity;
+            }
+            else{
+                alert("You have to buy atleast 1 item");
+            }
+
+            quantityCalculate.innerText=`${quantity} X 999`;
+            total.innerText=`₹${quantity*999}`;
+            
+        }
+    </script>
+</body>
+</html>
